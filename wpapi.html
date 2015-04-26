@@ -4,19 +4,55 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="build/react.js"></script>
     <script src="build/JSXTransformer.js"></script>
+    <script src="build/react-with-addons.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
-    <script type="text/jsx" src="wpapi.js"></script>
+    <script type="text/jsx" src="wpapp.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
     <style>
+    nav .brand-logo{
+      padding-right: 20px;
+      position: static;
+      margin: 0;
+    }
+    .searchBox h2{
+      font-size: 2rem;
+      margin: 0
+    }
+    .searchBox,
     article{
       border: 1px solid #ddd;
       padding: 20px;
       margin: 10px auto;
     }
+    .postList{
+      display: table;
+      width: 100%;
+      max-width: 100%;
+      cursor:pointer;
+
+    }
+    .postList > *{
+      display: table-cell!Important;
+      vertical-align: middle;
+    }
+    .postList i{
+      text-align: center;
+    }
+    .postList > div{
+      padding: 0 20px;
+    }
+    .postList h2{
+      font-size: 1rem;
+      margin: 0 auto;
+    }
+    .postList p{
+      margin: 0 auto;
+    }
+    select{ display: block;}
+    .hide{display:none!Important}
     </style>
   </head>
   <body>
-    <header id="header"></header>
-    <main   id="json"></main>
-    <footer id="footer"></footer>
+    <div id="container"></div>
   </body>
 </html>
