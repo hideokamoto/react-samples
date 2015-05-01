@@ -1,55 +1,3 @@
-var Root = React.createClass({
-    getInitialState: function(){
-      var url = "http://wp-kyoto.net/";
-      return {
-        url: url,
-        apiUrl: url + "wp-json/"
-      }
-    },
-    componentWillMount: function() {
-
-    },
-    render: function(){
-      var url = this.state.url;
-      var apiUrl = this.state.apiUrl;
-      return (
-        <div id="container">
-          <header>
-            <h1>WP-APIを表示させるアプリ</h1>
-            <table>
-              <tr>
-                <th>只今のURL</th>
-                <td>{url} , {apiUrl}</td>
-              </tr>
-              <tr>
-                <th>ここにWordPressのURL</th>
-                <td>
-                  <form onSubmit={this.urlChangeSubmit}>
-                    <input type="text" value={url} onChange={this.urlChange}/>
-                    <button type="submit">URL変更</button>
-                  </form>
-                </td>
-              </tr>
-            </table>
-          </header>
-          <hr/>
-          <Container url={apiUrl}/>
-        </div>
-      );
-    },
-    urlChange: function(event){
-      this.setState({
-        url: event.target.value
-      });
-    },
-    urlChangeSubmit: function(event){
-      event.preventDefault();
-      this.setState({
-        apiUrl: this.state.url + "wp-json/"
-      })
-    }
-});
-
 var Container = React.createClass({
     mixins: [React.addons.LinkedStateMixin],
     getDefaultProps: function(){
@@ -255,24 +203,11 @@ var Post = React.createClass({
 var Footer = React.createClass({
   render: function(){
     var data = this.props.data;
-    //this.doubleAjax();
     return (
       <footer>
         Copyright 2015 <a href={data.URL}>{data.name}</a><br/>
       </footer>
     );
-  },
-  doubleAjax: function(){
-    $.when(
-      $.getJSON('http://www.aiship.jp/knowhow/wp-json/posts'),
-      $.getJSON('http://wp-kyoto.net/wp-json/posts')
-    )
-    .done(function(data_a,data_b){
-      console.log(data_a[0],data_b[0]);
-    })
-    .fail(function(data_a,data_b){
-      console.log(false);
-    });
   },
 });
 
