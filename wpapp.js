@@ -262,6 +262,7 @@ var Footer = React.createClass({
       </footer>
     );
   },
+  /*
   doubleAjax: function(){
     $.when(
       $.getJSON('http://www.aiship.jp/knowhow/wp-json/posts'),
@@ -274,6 +275,7 @@ var Footer = React.createClass({
       console.log(false);
     });
   },
+  */
 });
 
 var converter = new Showdown.converter();
