@@ -1,0 +1,54 @@
+
+nav .brand-logo{
+    margin: 0;
+}
+nav span{display:none}
+@media(min-width: 481px){
+  nav .brand-logo{
+    padding-right: 20px;
+    position: static;
+    margin: 0;
+  }
+  nav span{display:none}
+}
+.contentBox h2{
+  font-size: 2rem;
+  margin: 0
+}
+.contentBox,
+article{
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px auto;
+}
+.postList{
+  display: table;
+  width: 100%;
+  max-width: 100%;
+  cursor:pointer;
+
+}
+.postList > *{
+  display: table-cell!Important;
+  vertical-align: middle;
+}
+.postList i{
+  text-align: center;
+}
+.postList > div{
+  padding: 0 20px;
+}
+.postList h2{
+  font-size: 1rem;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+.postList p{
+  margin: 0 auto;
+}
+select{ display: block;}
+.hide{display:none!Important}
+iframe,img{
+  max-width: 100%;
+  height: auto;
+}

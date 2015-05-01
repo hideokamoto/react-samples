@@ -61,10 +61,12 @@ var Container = React.createClass({
       var initialState = {
         search: '',
         num: 10,
+        order: 'DESC',
         siteData: [],
         query: {
           search: '',
-          num: 3
+          num: 3,
+          order: 'DESC'
         }
       }
       return initialState;
@@ -75,7 +77,7 @@ var Container = React.createClass({
         <div id="root">
           <Header data={this.state.siteData}>
           </Header>
-          <div className="searchBox container">
+          <div className="contentBox container">
             <h2>記事検索</h2>
             <form className="section" onSubmit={this.submitHandler}>
               <div className="row">
@@ -87,9 +89,9 @@ var Container = React.createClass({
                   <span>表示件数</span>
                   <input type="number" name="num" valueLink={this.linkState('num')} />
                 </label>
-                <label className="col s3 hide">
+                <label className="col s3">
                   <span>表示順序</span>
-                  <select name="order">
+                  <select name="order" valueLink={this.linkState('order')}>
                     <option value="DESC">降順</option>
                     <option value="ASC">昇順</option>
                   </select>
@@ -111,7 +113,8 @@ var Container = React.createClass({
       this.setState({
         query: {
           search: this.state.search,
-          num: this.state.num
+          num: this.state.num,
+          order: this.state.order
         }
       });
     },
@@ -164,7 +167,8 @@ var Main = React.createClass({
       );
     });
     return (
-      <main className="container">
+      <main className="container contentBox">
+        <h2>記事一覧</h2>
         <div className="row">
           {posts}
         </div>
@@ -181,6 +185,7 @@ var Main = React.createClass({
     var url = prop.url + "posts?";
     url += "filter[s]=" + prop.query.search;
     url += "&filter[posts_per_page]=" + prop.query.num;
+    url += "&filter[order]=" + prop.query.order;
     url += "&_jsonp=?";
     $.ajax({
       url: url,
@@ -250,13 +255,25 @@ var Post = React.createClass({
 var Footer = React.createClass({
   render: function(){
     var data = this.props.data;
+    //this.doubleAjax();
     return (
       <footer>
-        <a href={data.URL}>{data.name}</a><br/>
-        {data.description}
+        Copyright 2015 <a href={data.URL}>{data.name}</a><br/>
       </footer>
     );
-  }
+  },
+  doubleAjax: function(){
+    $.when(
+      $.getJSON('http://www.aiship.jp/knowhow/wp-json/posts'),
+      $.getJSON('http://wp-kyoto.net/wp-json/posts')
+    )
+    .done(function(data_a,data_b){
+      console.log(data_a[0],data_b[0]);
+    })
+    .fail(function(data_a,data_b){
+      console.log(false);
+    });
+  },
 });
 
 var converter = new Showdown.converter();

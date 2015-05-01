@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="build/react.js"></script>
     <script src="build/JSXTransformer.js"></script>
-    <script type="text/jsx" src="helloworld.js"></script>
+    <script type="text/jsx" src="index.js"></script>
     <style>
-    body > *{
+    body{
+      background: #f0f0f0;
+    }
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    li{
+      background: #fff;
+      padding: 0 20px;
       border: 1px solid #ddd;
-      padding: 20px;
       margin: 10px auto;
+      list-style-type:none;
+      width: 40%;
+    }
+    li h1{
+      font-size: 1.25rem;
+      border-bottom: 1px solid #666;
+      padding-bottom: 5px;
+    }
+    li dt{
+      font-weight: bold;
+    }
+    li dd{
+      margin-left: 10px;
+      line-height: 1.5;
+      font-size : 0.75rem;
     }
     </style>
   </head>
   <body>
     <header id="header"></header>
-    <main id="main"></main>
+    <main   id="list"></main>
     <footer id="footer"></footer>
   </body>
 </html>
