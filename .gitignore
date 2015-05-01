@@ -3,4 +3,3 @@ examples/
 node_modules/
 .DS_Store
 gulpfile.js
-README.md
